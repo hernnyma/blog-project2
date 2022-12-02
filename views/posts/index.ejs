@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+<title>Post</title>
+<body class="max-w-full max-h-full bg-scroll bg-cover"style="background-image: url('/stylesheets/images/cyberpunk-wallpaper-21010500152922.webp');">
+    <div class="flex flex-col m-60 gap-y-10">
+        <div class="grid grid-flow-row grid-cols-1 gap-6 place-content-center place-items-center">
+            <% posts.forEach(function(m) { %>
+                <div class="flex space-x-8 bg-black border-8 border-yellow-200 border-solid rounded-tr-full rounded-br-full shadow-2xl ring-8 ring-black flex-nowrap shadow-black">
+                    <div class="order-3 p-10 text-4xl text-yellow-200"><%= m.title %></div>
+                    <% m.userId.forEach(function(user) { %>
+                        <div class="order-2 p-10 text-4xl text-yellow-200"><%= user.name %></div>
+                        <img class="order-1 p-5" src="<%= user.avatar %>">
+                    <%}) %>
+                    <a class="order-4 p-12 text-4xl text-black transition-all duration-500 bg-yellow-300 rounded-full hover:text-7xl hover:bg-yellow-50 hover:text-yellow-500" href="/posts/<%=m.id%>">Details</a>
+                </div>
+            <%}) %>
+        </div>
+        <div class="flex mt-10 flex-nowrap place-content-center">
+            <div class="p-4 bg-gray-500 border-8 border-yellow-300 shadow-2xl rounded-3xl ring-8 ring-black shadow-black">
+                <form action="/posts" method="POST" class="flex flex-col gap-y-3">
+                    <input type="text" name="title" value="Your title..." class="p-5 text-white bg-black border-4 border-solid caret-red-600 rounded-3xl">
+                    <br>
+                    <textarea name="content" rows="4" cols="50" class="p-5 text-white bg-black border-4 border-solid caret-red-600 rounded-3xl">Write something...</textarea>
+                    <br>
+                    <input type="submit" class="p-5 text-3xl text-yellow-300 transition-all duration-500 bg-black rounded-full ring-4 ring-yellow-300 hover:text-5xl hover:text-white hover:shadow-2xl hover:shadow-white">
+                </form>
+            </div>
+        </div>
+    </d>
+</body>
+</html>

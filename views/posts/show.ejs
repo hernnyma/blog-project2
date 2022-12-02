@@ -1,0 +1,54 @@
+<%- include('../partials/header') %>
+<title>Post Details</title>
+<body class="max-w-full max-h-full bg-cover"style="background-image: url('/stylesheets/images/cyberpunk-wallpaper-21010500152922.webp');">
+    <div class="flex flex-col gap-y-10 m-60">
+        <div class="flex flex-col gap-5 place-items-center">
+            <div class="flex flex-col p-4 bg-gray-500 border-8 border-yellow-300 shadow-2xl gap-y-8 gap-x-5 place-items-start rounded-3xl ring-8 ring-black shadow-black">
+                <div class="order-2 p-4 text-2xl font-semibold text-white bg-black border-4 border-solid rounded-3xl"><%= posts.title %></div>
+                <div class="order-3 p-8 text-3xl text-white bg-black border-4 border-solid rounded-3xl"><%= posts.content %></div>
+                <div class="flex flex-row order-1 p-5 text-2xl font-extrabold text-white bg-black border-yellow-300 shadow-xl gap-x-6 place-items-center border-1 border-sold shadow-white rounded-3xl">
+                    <% posts.userId.forEach(function(m) { %>
+                        <img src="<%= m.avatar %>">
+                        <div><%= m.name %> </div>
+                    <%})%>
+                </div>
+                <div class="flex flex-row items-center order-4 space-x-10"> <div class="text-8xl "><%= posts.emoji %></div>
+                    <form action="/posts/<%= posts.id %>?_method=PUT" method="POST" class="p-5 text-3xl text-yellow-300 transition-all duration-500 bg-black rounded-full ring-4 ring-yellow-300 hover:text-5xl hover:text-white hover:shadow-2xl hover:shadow-white">
+                        <select name="emoji" class="text-black ">
+                            <option value="😀">😀</option>
+                            <option value="😂">😂</option>
+                            <option value="🤪">🤪</option>
+                        </select>
+                        <input type="submit" value="Emote">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="p-4 bg-gray-500 border-8 border-yellow-300 shadow-2xl rounded-3xl ring-8 ring-black shadow-black">
+            <form action="/posts/<%= posts.id %>/reply" method="POST" class="flex flex-col gap-y-3">
+                <textarea name="content" rows="4" cols="50" class="p-5 text-xl text-white bg-black border-4 border-solid caret-red-600 rounded-3xl">Write a reply...</textarea>
+
+                <input type="submit" value="Submit reply" class="p-5 text-3xl text-yellow-300 transition-all duration-500 bg-black rounded-full ring-4 ring-yellow-300 hover:text-5xl hover:text-white hover:shadow-2xl hover:shadow-white">
+            </form>
+        </div>
+        
+    <% if (posts.reply.length) { %>
+        <% posts.reply.forEach(function(m){ %>
+            <div class="flex flex-row items-center justify-start p-4 bg-gray-500 border-8 border-yellow-300 shadow-2xl gap-y-8 gap-x-5 rounded-3xl ring-8 ring-black shadow-black">
+            <div class="order-2 p-8 text-3xl text-white bg-black border-4 border-solid rounded-3xl"><%= m.content %></div>
+            <% m.userId.forEach(function(t){ %>
+                <div class="flex flex-col order-1 p-5 text-2xl font-extrabold text-white bg-black border-yellow-300 shadow-xl gap-x-6 place-items-center border-1 border-sold shadow-white rounded-3xl">
+                    <img src="<%= t.avatar %>">
+                    <div class="p-2"><%= t.name %></div>
+                </div>
+            <%})%>
+            </div>
+        <%})%>
+                
+    <%} else {%>
+        <div class="flex justify-center text-5xl font-bold text-black underline decoartion-solid">No Replies yet</div>
+    <%}%>
+    </div>
+</body>
+</html>

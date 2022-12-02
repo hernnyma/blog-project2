@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Nav Page</title>
+  </head>
+  <body class="max-w-full max-h-full bg-cover"style="background-image: url('/stylesheets/images/cyberpunk-wallpaper-21010500152922.webp');">
+  <div class="flex flex-wrap place-content-center my-80">
+    <div class="">
+      <% if (user) { %>
+        <div class="flex flex-col justify-center">
+          <div class="flex justify-center p-10 mb-16 antialiased font-extrabold text-9xl animate-slideRight">Welcome</div>
+          <div class="flex justify-center p-10 mb-16 font-extrabold text-yellow-300 bg-black border-8 border-yellow-300 rounded-full shadow-2xl text-9xl animate-slideLeft shadow-black"><%= user.name %></div>
+          <div class="grid grid-cols-3 grid-rows-2 gap-5">
+            <a href="/posts" class="col-start-1 pr-2 text-5xl text-yellow-300 transition-all duration-500 bg-gray-900 rounded-tr-full rounded-bl-full shadow-2xl pl-11 pt-7 shadow-slate-900 ring-offset-yellow-300 ring-offset-8 ring-8 ring-gray-900 hover:text-6xl hover:text-white hover:shadow-white hover:shadow-4xl">Posts</a>
+            <a href="/logout" class="col-start-2 row-start-2 pt-8 pl-4 text-5xl text-yellow-300 transition-all duration-500 bg-gray-900 rounded-full shadow-2xl shadow-slate-900 ring-offset-yellow-300 ring-offset-8 ring-8 ring-gray-900 hover:text-6xl hover:text-white hover:shadow-white hover:shadow-4xl">Log Out</a>
+            <a href="/profiles" class="col-start-3 p-8 text-5xl text-yellow-300 transition-all duration-500 bg-gray-900 rounded-tl-full rounded-br-full shadow-2xl shadow-slate-900 ring-offset-yellow-300 ring-offset-8 ring-8 ring-gray-900 hover:text-6xl hover:text-white hover:shadow-white hover:shadow-4xl">Profile</a>
+          </div>
+        </div>
+      <% } else { %>
+        <div class="flex flex-row gap-10">
+          <div class="p-8 font-extrabold drop-shadow-2xl text-9xl animate-slideRight shadow-black">b</div>
+          <div class="p-8 font-extrabold text-9xl animate-slideRight">l</div>
+          <a class="p-16 text-yellow-300 transition-all duration-500 bg-gray-900 rounded-tr-full rounded-bl-full shadow-2xl text-8xl shadow-slate-900 ring-offset-yellow-300 ring-offset-8 ring-8 ring-gray-900 hover:text-9xl hover:text-white hover:shadow-white hover:shadow-4xl animate-slideBackground" href="/auth/google"></i>Login</a>
+          <div class="p-8 font-extrabold text-9xl animate-slideLeft">g</div>
+        </div>
+        <% } %>
+    </div>
+  </div> 
+  </body>
+</html>
+

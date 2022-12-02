@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+<title>Profile</title>
+<body class="max-w-full max-h-full bg-cover"style="background-image: url('/stylesheets/images/cyberpunk-wallpaper-21010500152922.webp');">
+    <div class="flex flex-col gap-y-10 m-60">
+        <div class="flex flex-col items-center justify-center">
+            <img src="<%= users.avatar %>" alt="" class="box-border w-32 h-32 border-8 border-yellow-300 rounded-full shadow-2xl ring-8 ring-black">
+            <div class="flex flex-col items-center justify-start p-10 mt-10 text-xl text-white bg-gray-500 border-8 border-yellow-300 shadow-2xl gap-y-8 gap-x-5 rounded-3xl ring-8 ring-black shadow-black">
+                <div><%= users.name %></div>
+                <div class="underline decoration-solid"><%= users.email %></div>
+            </div>
+        </div>
+
+        <div class="flex justify-center text-5xl font-bold text-black underline decoartion-solid">Post History</div>
+        <div class="flex flex-col flex-wrap justify-center space-x-4">
+        <% posts.forEach(function(m) { %>
+            <div class="flex flex-row items-center justify-start gap-3 p-10 mt-10 text-xl text-white bg-gray-500 border-8 border-yellow-300 shadow-2xl gap-y-8 gap-x-5 rounded-3xl ring-8 ring-black shadow-black">
+                <div class="flex flex-col p-5">
+                    <div class="order-2 p-4 text-2xl font-semibold text-white bg-black border-4 border-solid rounded-3xl">Title: <%= m.title %></div>
+                    <div class="order-2 p-4 text-2xl font-semibold text-white bg-black border-4 border-solid rounded-3xl">Content: <%= m.content %></div>
+                </div>
+                <div class="flex flex-col items-end space-y-4">
+                    <a href="/posts/<%= m.id %>" class="p-5 text-3xl text-yellow-300 transition-all duration-500 bg-black rounded-full ring-4 ring-yellow-300 hover:text-5xl hover:text-white hover:shadow-2xl hover:shadow-white">Details</a>
+                    <form action="/posts/<%= m.id %>?_method=DELETE" method='POST' class="p-5 text-3xl text-yellow-300 transition-all duration-500 bg-black rounded-full ring-4 ring-yellow-300 hover:text-5xl hover:text-white hover:shadow-2xl hover:shadow-red-500 hover:bg-red-700">
+                    <input type="submit"  value="Delete">
+                    </form>
+                </div>
+            </div>
+        <%})%>
+        </div>
+    </div>
+</body>
+
+</html>
