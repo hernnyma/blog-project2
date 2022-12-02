@@ -17,7 +17,6 @@ function index(req, res) {
 function createNew(req, res) {
     let user = req.user
     //add the userid and avatar to the post for reference
-    console.log(user.id)
     Post.create(req.body, function(err, posts) {
         //associate post id with user and vice versa
         posts.userId.push(user.id)

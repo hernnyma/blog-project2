@@ -6,9 +6,7 @@ A simple blog that allows users to create a short post and and reply to other us
 
 ## Screenshots
 ---
-![EyeBlog]()
-![EyeBlog] 
-
+![EyeBlog](https://github.com/hernnyma/blog-project2/blob/main/public/stylesheets/images/login.png)
 
 ## Technologies Used:
 ---
