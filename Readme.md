@@ -6,7 +6,7 @@ A simple blog that allows users to create a short post and and reply to other us
 
 ## Screenshots
 ---
-![EyeBlog](https://git.generalassemb.ly/hernma/roulette/blob/main/imgs/gameUI.png)
+![EyeBlog]()
 ![EyeBlog] 
 
 
